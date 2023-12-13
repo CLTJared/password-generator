@@ -1,8 +1,8 @@
 // Global Variables
-let pwdLowerCase = null;
-let pwdUpperCase = null;
-let pwdNumeric = null;
-let pwdSpecial = null;
+let pwdLowerCase = '';
+let pwdUpperCase = '';
+let pwdNumeric = '';
+let pwdSpecial = '';
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -21,7 +21,9 @@ generateBtn.addEventListener("click", writePassword);
 
 // My Code Goes Below Here
 
+//
 // Get user's requirement for length of password
+//
 function promptLength() { 
   let pwdLength = '';
   let checkInput =  '';
@@ -34,6 +36,9 @@ function promptLength() {
   return pwdLength; // Return value(s) of Criteria
 }
 
+//
+// Prompt for user choices
+//
 function promptLower() { // Confirm if wanting lowercase letters
   pwdLowerCase = confirm("Do you want to include Lower Case letters?\n\nOK = Yes | Cancel = No");
   return pwdLowerCase;
@@ -51,9 +56,20 @@ function promptSpecial() { // Confirm if wanting special chars letters
   return pwdSpecial;
 }
 
-console.log(promptLength());
+//
+// Generate Password
+//
+function generatePassword() {
+  let userLength = promptLength();
+  let userLower = promptLower()
+  let userUpper = promptUpper()
+  let userNumber = promptNumber()
+  let userSpecial = promptSpecial()
 
-console.log(promptLower());
-console.log(promptUpper());
-console.log(promptNumber());
-console.log(promptSpecial());
+  // Console Log for debugging
+  console.log(userLength);
+  console.log(userLower);
+  console.log(userUpper);
+  console.log(userNumber);
+  console.log(userSpecial);
+}
