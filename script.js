@@ -72,4 +72,6 @@ function generatePassword() {
   console.log(userUpper);
   console.log(userNumber);
   console.log(userSpecial);
+
+  return "Check the console log for now...";
 }
