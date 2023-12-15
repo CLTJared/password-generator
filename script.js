@@ -11,9 +11,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
@@ -23,16 +21,15 @@ generateBtn.addEventListener("click", writePassword);
 // Get user's requirement for length of password
 //
 function promptLength() { 
-  let pwdLength = '';
-  let checkCancel = ''; // for checking the do while loop
-  let checkInput = '';
+  let pwdLength = ''; // Stores user submitted password length
+  let checkInput = ''; // For validating the users input
 
   // Do While loop so that we can continue to prompt user for length if they enter an invalid number.
   do {
     pwdLength = prompt("How many characters for your password?\n\nMinimum of 8, Maximum of 128. ", "8")
-    checkInput = pwdLength===null || pwdLength >= 8 && pwdLength <= 128;
+    checkInput = pwdLength===null || pwdLength >= 8 && pwdLength <= 128; // validates if user pressed cancel or if the password is outside of the valid length
 
-    console.log("Check Length: " + pwdLength);
+    console.log("Check Length: " + pwdLength); //confirm the user's length submitted
     console.log("Check Input: " + checkInput); //check if we should exit the prompt loop
   } while (!checkInput);
   
@@ -60,7 +57,7 @@ function promptSpecial() { // Confirm if wanting special chars letters
   return pwdSpecial;
 }
 
-// These strings are used 
+// These strings are used to build the valid chars information
 let numbers = '0123456789';
 let lowerLetter = 'abcdefghijklmnopqrstuvwxyz';
 let upperLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -69,9 +66,6 @@ let specialChars ='~!@#$%^&*()_{}|[]:";+<>?,./';
 
 function generatePassword() {
   let userLength = promptLength();
-  //
-  // Come back and create loop through these prompts if the user says NO to all
-  //
   if (userLength===0) { return "Generate function was cancelled."; } // if user cancelled the function, don't continue on.
 
   let userLower = promptLower()
@@ -79,6 +73,7 @@ function generatePassword() {
   let userNumber = promptNumber()
   let userSpecial = promptSpecial()
 
+  // Validation that the user selected at least one criteria
   if (!userLower && !userUpper && !userNumber && !userSpecial) { return "User entered no valid criteria for password."; };
 
   // Console Log for debugging
@@ -88,22 +83,23 @@ function generatePassword() {
   console.log("Use Number: " + userNumber);
   console.log("Use Special: " + userSpecial);
 
+  // Combines the user choices into a master string for the password valid
   let tempPWDString = ''; // Create temp string to hold valid char(s) from user choices
   if(userLower) tempPWDString = tempPWDString + lowerLetter;
   if(userUpper) tempPWDString = tempPWDString + upperLetter;
   if(userNumber) tempPWDString = tempPWDString + numbers;
   if(userSpecial) tempPWDString = tempPWDString + specialChars;
 
-  console.log("Valid Char(s): " + tempPWDString);
 
+  console.log("Valid Char(s): " + tempPWDString);
   //
   // Generate Password
   //
   let tempPWD = '';
-  for(let i=1;i<=userLength;i++) {
+  for(let i=1;i<=userLength;i++) { // Loops the amount of times the user entered in for the length
     tempPWD = tempPWD + tempPWDString.charAt(Math.floor(Math.random()*tempPWDString.length));
     console.log("User Length: " + userLength + " - Current Length: " + i + " - Current Pwd: " + tempPWD); // Log out each step of the password being generated
   }
 
-  return tempPWD;
+  return tempPWD; // Returns the password generated
 }
