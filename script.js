@@ -64,7 +64,8 @@ function promptSpecial() { // Confirm if wanting special chars letters
 let numbers = '0123456789';
 let lowerLetter = 'abcdefghijklmnopqrstuvwxyz';
 let upperLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-let specialChars ='!@#$%^&*()-+_=';
+let specialChars ='~!@#$%^&*()_{}|[]:";+<>?,./';
+
 
 function generatePassword() {
   let userLength = promptLength();
@@ -93,7 +94,7 @@ function generatePassword() {
   if(userNumber) tempPWDString = tempPWDString + numbers;
   if(userSpecial) tempPWDString = tempPWDString + specialChars;
 
-  console.log(tempPWDString);
+  console.log("Valid Char(s): " + tempPWDString);
 
   //
   // Generate Password
