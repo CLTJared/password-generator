@@ -7,5 +7,8 @@ Random password generator developed in Javascript. Prompts end-user for various 
 # Installation
 git clone git@github.com:CLTJared/password-generator.git
 
+# Demo / Screenshot
+![Demo screenshot of site](./assets/img/site-demo-screenshot.png)
+
 # License
 Software provided under MIT License. See LICENSE file.
