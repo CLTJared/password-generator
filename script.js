@@ -89,5 +89,11 @@ function generatePassword() {
 
   console.log(tempPWDString);
 
+  let tempPWD = '';
+  for(let i=0;i<userLength;i++) {
+    tempPWD = tempPWD + tempPWDString.charAt(Math.floor(Math.random()*tempPWDString.length));
+    console.log(tempPWD); // Log out each step of the password being generated
+  }
+
   return "Check the console log for now...";
 }
