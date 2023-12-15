@@ -59,8 +59,16 @@ function promptSpecial() { // Confirm if wanting special chars letters
 //
 // Generate Password
 //
+  let numbers = '0123456789';
+  let lowerLetter = 'abcdefghijklmnopqrstuvwxyz';
+  let upperLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let specialChars ='!@#$%^&*()-+_=';
+
 function generatePassword() {
   let userLength = promptLength();
+  //
+  // Come back and create loop through these prompts if the user says NO to all
+  //
   let userLower = promptLower()
   let userUpper = promptUpper()
   let userNumber = promptNumber()
@@ -72,6 +80,14 @@ function generatePassword() {
   console.log(userUpper);
   console.log(userNumber);
   console.log(userSpecial);
+
+  let tempPWDString = ''; // Create temp string to hold valid char(s) from user choices
+  if(userLower) tempPWDString = tempPWDString + lowerLetter;
+  if(userUpper) tempPWDString = tempPWDString + upperLetter;
+  if(userNumber) tempPWDString = tempPWDString + numbers;
+  if(userSpecial) tempPWDString = tempPWDString + specialChars;
+
+  console.log(tempPWDString);
 
   return "Check the console log for now...";
 }
