@@ -95,5 +95,5 @@ function generatePassword() {
     console.log(tempPWD); // Log out each step of the password being generated
   }
 
-  return "Check the console log for now...";
+  return tempPWD;
 }
